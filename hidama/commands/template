@@ -1,0 +1,19 @@
+import lightbulb
+import hikari
+
+plugin = lightbulb.Plugin("Name", "Description")
+
+@plugin.command()
+@lightbulb.add_cooldown(time, uses, lightbulb.GuildUserChannelGlobalBucket)
+@lightbulb.command("name", "Direct Description")
+@lightbulb.implements(lightbulb.PrefixSlashMessageUserCommand)
+async def commandname(ctx: lightbulb.SlashContextMessageContextUserContext) -> None:
+    itsworking = "Value"
+    emb = hikari.Embed(title="Title", description=itsworking)
+    await ctx.respond(embed=emb)
+    
+def load(bot):
+    bot.add_plugin(plugin)
+    
+def unload(bot):
+    bot.remove_plugin(plugin)
